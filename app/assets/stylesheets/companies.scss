@@ -3,6 +3,7 @@ body {
 }
 
 
+
 @font-face {
   font-family: 'Predige Rounded';
   src: font-url('PredigeRounded-Medium.otf') format('opentype');
@@ -36,3 +37,72 @@ h4 {
   height: 740px;
   margin: 30px;
 }
+
+
+
+
+
+
+form input[type=text]:focus,
+form input[type=email]:focus,
+form input[type=password]:focus,
+form input[type=number]:focus,
+form textarea:focus,
+form select:focus {
+  outline: none;
+  -webkit-appearance: none;
+}
+
+form {
+  overflow: hidden;
+}
+form label {
+  display: block;
+  padding-bottom: 10px;
+  text-align: left;
+}
+form li.select label {
+  padding: 15px 0;
+}
+form input[type=text],
+form input[type=email],
+form input[type=password],
+form input[type=number],
+form input[type=tel],
+form textarea {
+  display: block;
+  width: 100%;
+  padding: 15px 15px 13px 15px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  min-height: 30px;
+}
+form textarea {
+  border: 1px solid #ccc;
+}
+form input[type=radio] {
+  margin: 5px;
+}
+form input[type=text]:focus,
+form input[type=email]:focus,
+form input[type=password]:focus,
+form input[type=number]:focus,
+form textarea:focus {
+  border: 1px solid #333;
+}
+
+form input.submit,
+form button,
+form input[type=submit] {
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 14px 15px 14px 15px;
+  min-height: 60px;
+  color: #333;
+  text-decoration: none;
+  -webkit-appearance: none;
+}
+

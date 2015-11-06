@@ -55,6 +55,7 @@ group :development do
 end
 
 gem 'prawn-rails'
+gem 'simple_form'
 
 ruby '2.2.1'
 

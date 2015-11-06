@@ -1,0 +1,5 @@
+csv_text = File.read('#{Rails.root}/public/seed_data/companies.csv')
+csv = CSV.parse(csv_text, :headers => true)
+csv.each do |row|
+  Company.create!(row.to_hash)
+end
