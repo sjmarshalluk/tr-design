@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 
   def index
-    @companies = Company.all
+    @companies = Company.all.order('name ASC')
   end
 
   def new
@@ -52,7 +52,10 @@ def company_params
     :tech_stack,
     :hiring_saturday,
     :hiring_sunday,
-    :hiring_contact
+    :hiring_contact,
+    :founded,
+    :team_size,
+    :right
   )
 end
 

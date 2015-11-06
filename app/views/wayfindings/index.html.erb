@@ -1,0 +1,12 @@
+
+All signs
+
+<% @wayfindings.each do |wayfinding| %> 
+  <li>
+    <h2><%= link_to wayfinding.first_content, wayfinding_path(wayfinding) %></h2>
+    <p><%= link_to 'edit', edit_wayfinding_path(wayfinding) %>
+  </li>
+<% end %>
+
+
+<%= link_to 'new', new_wayfinding_path %>
