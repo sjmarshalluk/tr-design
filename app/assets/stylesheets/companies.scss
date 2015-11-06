@@ -51,6 +51,11 @@ body {
 
 
 
+@media print {
+   #page p {
+    font-size: 36px;
+  }
+}
 
 
 
