@@ -54,5 +54,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'prawn-rails'
+
 ruby '2.2.1'
 
