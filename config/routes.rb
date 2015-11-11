@@ -8,6 +8,7 @@ resources :companies do
 end
 resources :wayfindings
 get '/upload' => 'companies#upload'
+  get '/all' => 'companies#all'
 
 
 end

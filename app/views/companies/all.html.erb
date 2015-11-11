@@ -1,0 +1,28 @@
+
+<div class="all">
+<% @companies.each do |company| %> 
+<div id="page">
+<% if company.right %>
+<div class='right'>
+<% else %>
+<div>
+<% end %>
+<h1><%= link_to company.name, edit_company_path(company) %></h1>
+<h2><%= company.mission %></h2>
+<% if company.tech_stack %>
+<h4>Tech Stack</h4>
+<p><%= simple_format company.tech_stack %></p>
+<% end %>
+<h4>Open positions</h4>
+<p><%= company.hiring_saturday %>, <%= company.hiring_sunday %></p>
+<h4>Hiring contact</h4>
+<p>
+<%= company.hiring_contact %>
+</p>
+<%= company.saturday %>
+<%= company.sunday %>
+<%= company.pitch %>
+</div>
+</div>
+<% end %>
+</div>

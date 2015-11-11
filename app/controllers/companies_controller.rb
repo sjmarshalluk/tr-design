@@ -4,6 +4,22 @@ class CompaniesController < ApplicationController
     @companies = Company.all.order('name ASC')
   end
 
+  def all
+    @companies = Company.all.order('name ASC')
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = CompanyPdf.new(@companies)
+        send_data pdf.render, filename: 'company.pdf', type: 'application/pdf'
+      end
+    end
+  end
+
+  def import
+    Company.import(params[:file])
+    redirect_to root_url, notice: "Products imported."
+  end
+
   def new
     @company = Company.new
   end
@@ -31,16 +47,13 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     if @company.update(company_params)
       flash[:success] = "Changes saved"
-      redirect_to company_path
+      redirect_to '/all'
     else
       flash[:error] = "Nope"
       render :new
     end
   end
 
-  def import
-    Companies.import(params[:file])
-  end
 
 
 private
@@ -55,7 +68,11 @@ def company_params
     :hiring_contact,
     :founded,
     :team_size,
-    :right
+    :right,
+    :logo,
+    :saturday,
+    :sunday,
+    :pitch
   )
 end
 

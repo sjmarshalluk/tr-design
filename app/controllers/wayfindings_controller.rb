@@ -3,6 +3,13 @@ class WayfindingsController < ApplicationController
 
   def index
     @wayfindings = Wayfinding.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = WayfindingPdf.new(@wayfindings)
+        send_data pdf.render, filename: 'wayfinding.pdf', type: 'application/pdf'
+      end
+    end
   end
 
   def new
@@ -32,7 +39,7 @@ class WayfindingsController < ApplicationController
     @wayfinding = Wayfinding.find(params[:id])
     if @wayfinding.update(wayfinding_params)
       flash[:success] = "Changes saved"
-      redirect_to wayfinding_path
+      redirect_to wayfindings_path
     else
       flash[:error] = "Nope"
       render :new

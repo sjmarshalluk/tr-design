@@ -55,7 +55,11 @@ group :development do
 end
 
 gem 'prawn-rails'
+gem 'prawn'
+gem 'prawnto'
 gem 'simple_form'
+gem 'paperclip'
+gem 'pdfkit'
 
 ruby '2.2.1'
 

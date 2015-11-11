@@ -18,7 +18,6 @@ body {
 
 
 
-
 #page {
   width: 336px;
   height: 399px;
@@ -49,6 +48,14 @@ body {
   font-size: 12px;
 }
 
+
+.all {
+  width: 800px;
+}
+
+.all #page {
+  float: left;
+}
 
 
 @media print {
