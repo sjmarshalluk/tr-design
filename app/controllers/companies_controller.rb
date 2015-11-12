@@ -15,6 +15,10 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def floorplan
+    @companies = Company.where(":name = '1ROOF'").order('name ASC')
+  end
+
   def import
     Company.import(params[:file])
     redirect_to root_url, notice: "Products imported."

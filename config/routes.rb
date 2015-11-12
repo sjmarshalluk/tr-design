@@ -9,6 +9,7 @@ end
 resources :wayfindings
 get '/upload' => 'companies#upload'
   get '/all' => 'companies#all'
+    get '/floorplan' => 'companies#floorplan'
 
 
 end

@@ -4,6 +4,7 @@ class CompanyPdf < Prawn::Document
 
 
 
+
   def initialize(companies)
     super(:page_size => "A6",)
     font_families.update(
@@ -14,7 +15,36 @@ class CompanyPdf < Prawn::Document
       "PredigeRounded" => {
         :normal => "#{Rails.root.to_s}/public/fonts/PredigeRounded-Medium.ttf"
       }
+
     )
+    spacing = 12
+    margin = 30
+    
+    canvas do
+      # topleft corner
+      stroke_line [bounds.left + spacing, bounds.top - margin], 
+                  [bounds.left + margin - spacing, bounds.top - margin]
+      stroke_line [bounds.left + margin, bounds.top - spacing], 
+                  [bounds.left + margin, bounds.top - margin + spacing]
+      
+      # topright corner
+      stroke_line [bounds.right - spacing, bounds.top - margin], 
+                  [bounds.right - margin + spacing, bounds.top - margin]
+      stroke_line [bounds.right - margin, bounds.top - spacing], 
+                  [bounds.right - margin, bounds.top - margin + spacing]
+      
+      # bottomleft corner
+      stroke_line [bounds.left + spacing, bounds.bottom + margin], 
+                  [bounds.left + margin - spacing, bounds.bottom + margin]
+      stroke_line [bounds.left + margin, bounds.bottom + spacing], 
+                  [bounds.left + margin, bounds.bottom + margin - spacing]
+      
+      # bottomright corner
+      stroke_line [bounds.right - spacing, bounds.bottom + margin], 
+                  [bounds.right - margin + spacing, bounds.bottom + margin]
+      stroke_line [bounds.right - margin, bounds.bottom + spacing], 
+                  [bounds.right - margin, bounds.bottom + margin - spacing]
+    end
     @companies = companies
     header
     text_content

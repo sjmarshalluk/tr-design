@@ -1,0 +1,8 @@
+
+<%= @city.name %>
+
+<% @city.companies.each do |company|%>
+
+    <%= link_to company.name, city_company_path(@city, company) %>
+    
+<% end %>
