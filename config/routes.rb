@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
 
-root "pages#index"
-
-
-resources :companies do
-  collection { post :import }
+root "cities#index"
+resources :cities do
+  resources :companies do
+    collection { post :import }
+  end
+  resources :wayfindings
+  get '/company/floorplan' => 'companies#floorplan'
+  get '/company/booklet' => 'companies#booklet'
+  get '/company/logos' => 'companies#logos'
+  get '/company/floorplan/a4' => 'companies#a4'
 end
-resources :wayfindings
+
 get '/upload' => 'companies#upload'
-  get '/all' => 'companies#all'
-    get '/floorplan' => 'companies#floorplan'
+
 
 
 end

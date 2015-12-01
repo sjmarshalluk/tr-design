@@ -1,6 +1,9 @@
 
 <%= @city.name %>
 
+<%= link_to 'Companies', city_companies_path(@city) %>
+<%= link_to 'Signage', city_wayfindings_path(@city) %>
+
 <% @city.companies.each do |company|%>
 
     <%= link_to company.name, city_company_path(@city, company) %>

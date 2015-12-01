@@ -7,8 +7,8 @@ All signs
     <li><%= wayfinding.second_content %></li>
     <li><%= wayfinding.third_content %></li>
   </ul>
-    <p><%= link_to 'edit', edit_wayfinding_path(wayfinding) %><p>
+    <p><%= link_to 'edit', edit_city_wayfinding_path(@city, wayfinding) %><p>
 <% end %>
 
 
-<%= link_to 'new', new_wayfinding_path %>
+<%= link_to 'new', new_city_wayfinding_path %>

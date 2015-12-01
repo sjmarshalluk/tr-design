@@ -1,9 +1,6 @@
-class CompanyPdf < Prawn::Document
+class CompanyPdf < PDFX::Document
 
   require "open-uri"
-
-
-
 
   def initialize(companies)
     super(:page_size => "A6",)

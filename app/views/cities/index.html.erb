@@ -1,9 +1,10 @@
 
 Cities
 
+<ul>
 <% @cities.each do |city| %> 
-  <%= link_to '#{city.name}', city_path(city) %>
+  <li><%= link_to "#{city.name}", city_path(city) %></li>
 <% end %>
-
+</ul>
 
 <%= link_to 'new', new_city_path %>

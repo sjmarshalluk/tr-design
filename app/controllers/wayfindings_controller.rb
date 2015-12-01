@@ -2,6 +2,7 @@ class WayfindingsController < ApplicationController
 
 
   def index
+    @city = City.find(params[:city_id])
     @wayfindings = Wayfinding.all
     respond_to do |format|
       format.html
@@ -13,6 +14,7 @@ class WayfindingsController < ApplicationController
   end
 
   def new
+    @city = City.find(params[:city_id])
     @wayfinding = Wayfinding.new
   end
 
@@ -20,7 +22,7 @@ class WayfindingsController < ApplicationController
     @wayfinding = Wayfinding.new(wayfinding_params)
     if @wayfinding.save
       flash[:success] = "That saved"
-      redirect_to wayfindings_path
+      redirect_to city_wayfindings_path
     else
       flash[:error] = "Something went wrong"
       render :new
@@ -32,6 +34,7 @@ class WayfindingsController < ApplicationController
   end
 
   def edit
+    @city = City.find(params[:city_id])
     @wayfinding = Wayfinding.find(params[:id])
   end
 
@@ -39,7 +42,7 @@ class WayfindingsController < ApplicationController
     @wayfinding = Wayfinding.find(params[:id])
     if @wayfinding.update(wayfinding_params)
       flash[:success] = "Changes saved"
-      redirect_to wayfindings_path
+      redirect_to city_wayfindings_path
     else
       flash[:error] = "Nope"
       render :new

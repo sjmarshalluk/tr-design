@@ -1,10 +1,12 @@
 class CompaniesController < ApplicationController
 
   def index
+    @city = City.find(params[:city_id])
     @companies = Company.all.order('name ASC')
   end
 
-  def all
+  def booklet
+    @city = City.find(params[:city_id])
     @companies = Company.all.order('name ASC')
     respond_to do |format|
       format.html
@@ -16,7 +18,22 @@ class CompaniesController < ApplicationController
   end
 
   def floorplan
-    @companies = Company.where(":name = '1ROOF'").order('name ASC')
+    @city = City.find(params[:city_id])
+    @companies = Company.where("saturday = ?", "TRUE").order('pitch ASC')
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = FloorplanPdf.new(@companies)
+        send_data pdf.render, filename: 'floorplan.pdf', type: 'application/pdf'
+      end
+    end
+  end
+
+
+
+  def logos
+    @city = City.find(params[:city_id])
+    @companies = Company.all.order('name ASC')
   end
 
   def import
@@ -44,6 +61,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+    @city = City.find(params[:city_id])
     @company = Company.find(params[:id])
   end
 
@@ -51,13 +69,19 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     if @company.update(company_params)
       flash[:success] = "Changes saved"
-      redirect_to '/all'
+      redirect_to city_companies_path
     else
       flash[:error] = "Nope"
       render :new
     end
   end
 
+  def destroy
+    @company = Company.find(params[:id])
+    @company.delete
+    flash[:success] = "Deleted"
+    redirect_to city_companies_path
+  end
 
 
 private
@@ -76,7 +100,8 @@ def company_params
     :logo,
     :saturday,
     :sunday,
-    :pitch
+    :pitch,
+    :city_id
   )
 end
 

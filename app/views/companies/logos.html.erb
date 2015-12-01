@@ -1,0 +1,10 @@
+
+<ul class="logogrid">
+
+<% @companies.each do |company| %> 
+  <li>
+    <%= image_tag "#{company.logo}"  %> 
+  </li>
+<% end %>
+
+</ul>

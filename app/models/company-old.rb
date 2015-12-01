@@ -1,5 +1,4 @@
 class Company < ActiveRecord::Base
-  belongs_to :city
 
   require 'csv'
 
@@ -16,4 +15,7 @@ class Company < ActiveRecord::Base
       end # end if !product.nil?
     end # end CSV.foreach
   end # end self.import(file)
+
+  has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
+
 end

@@ -2,7 +2,29 @@ body {
   font-family: 'Titillium Web';  
 }
 
+img {max-width: 100%;}
 
+.logogrid {
+  width: 1100px;
+}
+
+.logogrid li {
+  position: relative;
+  width: 160px; 
+  float: right; 
+  margin-right: 45px; 
+  margin-bottom: 45px;
+  display: block; 
+  height: 160px
+}
+
+.logogrid img {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(0, -50%); 
+  -webkit-transform: translate(-50%, -50%); 
+}
 
 @font-face {
   font-family: 'Predige Rounded';

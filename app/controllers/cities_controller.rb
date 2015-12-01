@@ -9,7 +9,7 @@ class CitiesController < ApplicationController
   end
 
   def create
-    @city = City.new
+    @city = City.new(city_params)
     if @city.save
       flash[:success] = "That saved"
       redirect_to root_path

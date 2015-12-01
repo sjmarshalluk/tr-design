@@ -7,7 +7,7 @@
 <% else %>
 <div>
 <% end %>
-<h1><%= link_to company.name, edit_company_path(company) %></h1>
+<h1><%= link_to company.name, edit_city_company_path(@city, company) %></h1>
 <h2><%= company.mission %></h2>
 <% if company.tech_stack %>
 <h4>Tech Stack</h4>

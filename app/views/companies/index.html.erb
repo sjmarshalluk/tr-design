@@ -1,5 +1,5 @@
 
-<%= form_tag import_companies_path, multipart: true do %>
+<%= form_tag import_city_companies_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Import CSV" %>
 <% end %>
@@ -7,4 +7,13 @@
 Number of companies
 <%= @companies.count %>
 
-<%= link_to 'View all companies', '/all' %>
+<%= link_to 'Edit booklet', city_company_booklet_path %>
+<%= link_to 'Edit floorplan', city_company_floorplan_path %>
+
+
+<ul>
+<% @companies.each do |company| %> 
+
+  <li><%= link_to company.name, edit_city_company_path(@city, company) %></li>
+<% end %>
+</ul>
